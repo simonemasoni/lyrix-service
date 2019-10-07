@@ -10,8 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/ui', express.static(__dirname + '/public/ui'));
-
 var port = process.env.PORT || 5000;
 
 let SongModel = require('./models/song');
@@ -27,6 +25,8 @@ router.get('/song/:songId', (req, res) => {
 });
 
 app.use('/1', router);
+
+app.use('/', express.static(__dirname + '/public/ui'));
 
 app.listen(port);
 console.log('Server listening on port: ' + port);
