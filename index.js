@@ -16,7 +16,7 @@ let SongModel = require('./models/song');
 
 var router = express.Router(); 
 router.get('/song', (req, res) => {
-  SongModel.find().sort({title: 1}).then(docs => res.json(docs));
+  SongModel.find({}, 'title author').sort({title: 1}).then(docs => res.json(docs));
 });
 
 router.get('/song/:songId', (req, res) => {
