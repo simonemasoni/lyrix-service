@@ -10,9 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.configure(function() {
-  app.use('/ui', express.static(__dirname + '/public/ui'));
-});
+app.use('/ui', express.static(__dirname + '/public/ui'));
 
 var port = process.env.PORT || 5000;
 
