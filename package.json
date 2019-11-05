@@ -1,6 +1,6 @@
 {
   "name": "lyrix-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A sample Node.js app using Express 4 for Lyrix app",
   "engines": {
     "node": "10.x"
