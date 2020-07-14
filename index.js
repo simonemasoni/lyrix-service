@@ -24,6 +24,12 @@ router.get('/song/:songId', (req, res) => {
   SongModel.findById(songId).then(doc => res.json(doc));
 });
 
+router.put('/song/:songId', (req, res) => {
+  var songId = req.params.songId;
+  console.log("Need to update song with id " + songId);
+  SongModel.findByIdAndUpdate(songId, {lyrics: req.body.lyrics}).then(() => res.json({}));
+});
+
 app.use('/1', router);
 
 app.use('/', express.static(__dirname + '/public/ui'));

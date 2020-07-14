@@ -11,7 +11,7 @@ class Database {
   }
   
 _connect() {
-     mongoose.connect(`mongodb+srv://ldadmin:${password}@beta-ld-q88kd.mongodb.net/lyrix?retryWrites=true&w=majority`, {userNewUrlParser: true})
+     mongoose.connect(`mongodb+srv://ldadmin:${password}@beta-ld-q88kd.mongodb.net/lyrix?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology:true})
        .then(() => {
          console.log('Database connection successful')
        })
