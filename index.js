@@ -16,7 +16,7 @@ let SongModel = require("./models/song");
 
 var router = express.Router();
 router.get("/song", (req, res) => {
-  SongModel.find({}, "title author")
+  SongModel.find({}, "title author durationInSeconds")
     .sort({ title: 1 })
     .then((docs) => res.json(docs));
 });
@@ -28,7 +28,9 @@ router.get("/song/:songId", (req, res) => {
 
 router.put("/song/:songId", (req, res) => {
   var songId = req.params.songId;
-  SongModel.findByIdAndUpdate(songId, { lyrics: req.body.lyrics }).then(() =>
+  const song = req.body;
+  delete song._id;  
+  SongModel.findByIdAndUpdate(songId, song).then(() =>
     res.json({})
   );
 });
