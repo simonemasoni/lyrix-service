@@ -1,13 +1,9 @@
-var http = require('http');
 var express = require("express");
 var cors = require("cors");
 
 var app = express();
-var server = http.createServer(app);
-
-var io = require('socket.io').listen(server);
-
 var bodyParser = require("body-parser");
+
 var database = require("./database");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,18 +47,5 @@ app.use("/1", router);
 
 app.use("/", express.static(__dirname + "/public/ui"));
 
-//app.listen(port);
-
-server.listen(port);
+app.listen(port);
 console.log("Server listening on port: " + port);
-
-
-// Handle connection
-io.on('connection', function (socket) {
-  console.log("Connected succesfully to the socket ...");
-
-  socket.on('goToSong', function (data) {
-      console.log(`Received message to go to song ${data}`);
-      socket.emit('navigateToSong', data);
-  });
-});
