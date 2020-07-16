@@ -63,6 +63,6 @@ io.on('connection', function (socket) {
 
   socket.on('goToSong', function (data) {
       console.log(`Received message to go to song ${data}`);
-      socket.emit('navigateToSong', data);
+      socket.broadcast.emit('navigateToSong', data);
   });
 });
