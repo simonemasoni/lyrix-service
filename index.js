@@ -62,12 +62,12 @@ io.on('connection', function (socket) {
   console.log("Connected succesfully to the socket ...");
 
   socket.on('goToSong', function (data) {
-      console.log(`Received message to go to song ${data}`);
+      // console.log(`Received message to go to song ${data}`);
       socket.broadcast.emit('navigateToSong', data);
   });
 
   socket.on('songPositionPercUpdate', function(data) {
-    console.log(`Received song position update on song ${data.songId} and perc ${data.perc}%`);
+    // console.log(`Received song position update on song ${data.songId} and perc ${data.perc}%`);
     socket.broadcast.emit('songPositionPercUpdateReceived', data);
   });
 
